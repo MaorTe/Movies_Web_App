@@ -6,10 +6,11 @@ import ProductDetail from './components/ProductDetail';
 import NotFound from './pages/NotFound.component';
 
 function App() {
+	// const API_KEY = 'apikey=1ff185cc';
 	return (
 		<div>
 			<Router>
-				<NavBar />
+				<NavBar className="navbar" />
 				<Switch>
 					<Route exact path="/" component={Homepage} />
 					<Route exact path="/products" component={Products} />

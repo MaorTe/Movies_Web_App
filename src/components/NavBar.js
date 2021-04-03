@@ -1,23 +1,16 @@
 import { Link } from 'react-router-dom';
-const NavBar = () => {
-	const styleContainer = {
-		display: 'flex',
-		alignItems: 'center',
-		background: 'gray',
-		borderBottom: '1px solid black',
-		height: '50px',
-	};
-	const styleNavItem = {
-		marginLeft: '1rem',
-	};
+
+const NavBar = ({ className }) => {
 	return (
-		<div style={styleContainer}>
-			<Link style={styleNavItem} to="/">
-				home
-			</Link>
-			<Link style={styleNavItem} to="/products">
-				products
-			</Link>
+		<div className={className}>
+			<ul>
+				<li>
+					<Link to="/">home</Link>
+				</li>
+				<li>
+					<Link to="/products">products</Link>
+				</li>
+			</ul>
 		</div>
 	);
 };

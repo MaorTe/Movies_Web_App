@@ -1,12 +1,6 @@
 const Homepage = () => {
-	const styles = {
-		minHeight: 'calc(100vh - 50px)',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	};
 	return (
-		<div style={styles}>
+		<div className="homepage">
 			<h1>This is my beautiful landing page</h1>
 		</div>
 	);
