@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import data from '../store';
-const ProductDetail = (props) => {
+const MovieCard = (props) => {
 	// state = { product: null };
 	const [product, setProduct] = useState(null);
 	useEffect(() => {
@@ -29,4 +29,4 @@ const ProductDetail = (props) => {
 	);
 };
 
-export default ProductDetail;
+export default MovieCard;

@@ -12,12 +12,7 @@ code {
 		monospace;
 }
 /* My CSS */
-.homepage{
-  min-height: calc(100vh - 50px);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -28,7 +23,7 @@ html,
 body {
 	background: #201f32;
 }
-
+/* -------------NavBar------------- */
 .navbar {
 	display: flex;
 	justify-content: flex-start;
@@ -60,3 +55,25 @@ body {
 	color: #bbbbc1;
 	background: #201f32;
 }
+
+/* -------------Homepage------------- */
+.homepage {
+	min-height: calc(100vh - 50px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-gap: 0.5rem;
+	padding: 0;
+	text-align: center;
+	color: var(--white);
+	font-size: 4rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	background: var(--dark-blue);
+}
+/* -------------NavBar------------- */
