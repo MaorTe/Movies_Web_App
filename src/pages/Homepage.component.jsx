@@ -7,8 +7,8 @@ import Carousel from '../components/Carousel';
 const Homepage = () => {
 	const [moviesTop, setMoviesTop] = useState([]);
 	const [seriesTop, setSeriesTop] = useState([]);
-	const [moviesByRating, setMoviesByRating] = useState([]);
-	const [seriesByRating, setSeriesByRating] = useState([]);
+	// const [moviesByRating, setMoviesByRating] = useState([]);
+	// const [seriesByRating, setSeriesByRating] = useState([]);
 
 	useEffect(() => {
 		const FetchData = async () => {

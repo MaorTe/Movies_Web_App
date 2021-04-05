@@ -2,15 +2,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage.component';
 import Products from './components/Products';
-import MovieCard from './components/MovieCard';
 import NotFound from './pages/NotFound.component';
-import { useEffect, useState } from 'react';
-import API from './api/API';
+import { useEffect } from 'react';
 import MovieDetails from './pages/MovieDetails.component';
 
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
-	const [topRatedMovies, setTopRatedMovies] = useState([]);
+	// const [topRatedMovies, setTopRatedMovies] = useState([]);
 	useEffect(() => {
 		const createLocalStorage = () => {
 			if (!Array.isArray(JSON.parse(localStorage.getItem('tableData')))) {
@@ -45,7 +43,6 @@ function App() {
 					<Route component={NotFound} />
 				</Switch>
 			</Router>
-			{topRatedMovies}
 		</div>
 	);
 }

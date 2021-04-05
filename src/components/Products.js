@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import MultipleItems from './Carousel';
 const Watchlist = (props) => {
 	// const [data, setData] = useState([]);
 

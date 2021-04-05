@@ -3,8 +3,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import React from 'react';
 import MovieCard from './MovieCard';
-import NextArrow from './NextArrow';
-import PrevArrow from './PrevArrow';
+// import NextArrow from './NextArrow';
+// import PrevArrow from './PrevArrow';
 const Carousel = ({ data, onPosterClick }) => {
 	const settings = {
 		dots: true,
