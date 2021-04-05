@@ -11,8 +11,8 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
-/* My CSS */
 
+/* My CSS */
 * {
 	margin: 0;
 	padding: 0;
@@ -21,7 +21,9 @@ code {
 
 html,
 body {
-	background: #201f32;
+	/* background: #201f32; */
+	background: green;
+	color: #fff;
 }
 /* -------------NavBar------------- */
 .navbar {
@@ -57,23 +59,42 @@ body {
 }
 
 /* -------------Homepage------------- */
+
+.homepage .slick-prev {
+	left: 3% !important;
+	z-index: 1;
+}
+.homepage .slick-next {
+	right: 3% !important;
+	z-index: 1;
+}
+
 .homepage {
 	min-height: calc(100vh - 50px);
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 }
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(4, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(1, 1fr);
 	grid-gap: 0.5rem;
 	padding: 0;
 	text-align: center;
-	color: var(--white);
 	font-size: 4rem;
 	flex-wrap: wrap;
 	justify-content: center;
-	background: var(--dark-blue);
+	overflow: auto;
 }
-/* -------------NavBar------------- */
+/* -------------MovieCard------------- */
+.movie-card {
+	display: flex;
+	flex-direction: column;
+	margin: 15px;
+}
+
+svg {
+	width: 20px;
+	height: 20px;
+}
