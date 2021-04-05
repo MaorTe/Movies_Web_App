@@ -11,6 +11,20 @@ import MovieDetails from './pages/MovieDetails.component';
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
+	useEffect(() => {
+		const createLocalStorage = () => {
+			if (!Array.isArray(JSON.parse(localStorage.getItem('tableData')))) {
+				localStorage.setItem('tableData', JSON.stringify([]));
+				// loadingTitle.classList.remove('hidden');
+				// setTimeout(() => {
+				// 	const tableData = renderData();
+				// 	loadingTitle.classList.add('hidden');
+				// localStorage.setItem(`tableData`, JSON.stringify(tableData));
+				// }, 10000);
+			}
+		};
+		createLocalStorage();
+	}, []);
 	return (
 		<div>
 			<Router>
