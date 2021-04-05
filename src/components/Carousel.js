@@ -53,6 +53,7 @@ const Carousel = ({ data, onPosterClick }) => {
 				{data.map((movie, index) => (
 					<MovieCard
 						key={index}
+						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}
 						onPosterClick={onPosterClick}

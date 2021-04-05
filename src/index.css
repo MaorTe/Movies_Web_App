@@ -92,6 +92,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: 15px;
+	min-height: calc(100vh - 50px);
+	/* background: url('aa') no-repeat center; */
 }
 
 svg {

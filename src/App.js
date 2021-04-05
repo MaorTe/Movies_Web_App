@@ -2,10 +2,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage.component';
 import Products from './components/Products';
-// import MovieCard from './components/MovieCard';
+import MovieCard from './components/MovieCard';
 import NotFound from './pages/NotFound.component';
 import { useEffect, useState } from 'react';
 import API from './api/API';
+import MovieDetails from './pages/MovieDetails.component';
 
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
@@ -26,7 +27,7 @@ function App() {
 						// component={() => <Homepage movieData={topRatedMovies} />}
 					/>
 					<Route exact path="/products" component={Products} />
-					{/* <Route exact path="/products/:id" component={MovieCard} /> */}
+					<Route exact path="/MovieDetails/:id" component={MovieDetails} />
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

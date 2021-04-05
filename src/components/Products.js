@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import store from '../store';
 import MultipleItems from './Carousel';
-const Products = (props) => {
-	const [data, setData] = useState([]);
+const Watchlist = (props) => {
+	// const [data, setData] = useState([]);
 
-	useEffect(() => {
-		setData(store);
-	}, []);
+	// useEffect(() => {
+	// 	setData(store);
+	// }, []);
 
 	return (
 		<div>{/* <MultipleItems></MultipleItems> */}</div>
@@ -30,4 +29,4 @@ const Products = (props) => {
 		// </div>
 	);
 };
-export default Products;
+export default Watchlist;
