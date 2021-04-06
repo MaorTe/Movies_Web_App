@@ -1,24 +1,23 @@
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import MyUtilFunc from '../utils/MyUtilFunc';
+import MyUtilFunc2 from '../utils/MyUtilFunc2';
+import AddOrRemoveBtn from './AddOrRemoveBtn';
 
-const MovieCard = ({ title, poster, id, onPosterClick }) => {
-	const onPosterClick1 = () => {
-		const tableData = JSON.parse(localStorage.getItem('tableData'));
-		tableData.push({
-			id,
-			title,
-			poster,
-		});
-		localStorage.setItem('tableData', JSON.stringify(tableData));
-	};
+const MovieCard = ({ title, poster, id, type, onButtonClick }) => {
 	return (
 		<div className="">
-			<Link to={`/MovieDetails/${id}`} onClick={() => ' fetchMovieById(id)'}>
+			<Link to={`/MovieDetails/${type}/${id}`}>
 				<img src={poster} alt="" width="300" />
 			</Link>
 			<div>{title}</div>
-			{/* <Link to="/products"> */}
-			<button onClick={() => onPosterClick1()}>Add To Watchlist</button>
-			{/* </Link> */}
+			<AddOrRemoveBtn
+				id={id}
+				title={title}
+				poster={poster}
+				type={type}
+				onButtonClick={onButtonClick}
+			/>
 		</div>
 	);
 };

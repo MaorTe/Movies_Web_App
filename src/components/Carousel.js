@@ -10,7 +10,7 @@ const Carousel = ({ data, onPosterClick }) => {
 		dots: true,
 		infinite: false,
 		speed: 500,
-		slidesToShow: 4,
+		slidesToShow: 3,
 		slidesToScroll: 3,
 		// prevArrow: <PrevArrow />,
 		// nextArrow: <NextArrow />,
@@ -56,7 +56,8 @@ const Carousel = ({ data, onPosterClick }) => {
 						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}
-						onPosterClick={onPosterClick}
+						type={movie.type}
+						onButtonClick={onPosterClick}
 					/>
 				))}
 			</Slider>

@@ -34,6 +34,7 @@ const Homepage = () => {
 						id: el.id,
 						title: el.title,
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
+						type: 'movie'
 					};
 				})
 			);
@@ -43,6 +44,7 @@ const Homepage = () => {
 						id: el.id,
 						title: el.name,
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
+						type: 'tv'
 					};
 				})
 			);
@@ -52,6 +54,7 @@ const Homepage = () => {
 		};
 		FetchData();
 	}, []);
+
 
 	const onPosterClick = (movieID) => {
 		//iterate over the database and find the correct id/title then move to the correct movie

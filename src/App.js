@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage.component';
-import Products from './components/Products';
+// import Products from './components/Products';
 import NotFound from './pages/NotFound.component';
 import { useEffect } from 'react';
 import MovieDetails from './pages/MovieDetails.component';
+import Watchlist from './pages/Watchlist.component';
 
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
@@ -23,6 +24,7 @@ function App() {
 		};
 		createLocalStorage();
 	}, []);
+
 	return (
 		<div>
 			<Router>
@@ -38,8 +40,12 @@ function App() {
 						component={Homepage}
 						// component={() => <Homepage movieData={topRatedMovies} />}
 					/>
-					<Route exact path="/products" component={Products} />
-					<Route exact path="/MovieDetails/:id" component={MovieDetails} />
+					<Route exact path="/Watchlist" component={Watchlist} />
+					<Route
+						exact
+						path="/MovieDetails/:type/:id"
+						component={MovieDetails}
+					/>
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

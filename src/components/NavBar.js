@@ -5,10 +5,10 @@ const NavBar = ({ className }) => {
 		<div className={className}>
 			<ul>
 				<li>
-					<Link to="/">home</Link>
+					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<Link to="/products">products</Link>
+					<Link to="/Watchlist">Watchlist</Link>
 				</li>
 			</ul>
 		</div>

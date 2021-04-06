@@ -21,8 +21,8 @@ code {
 
 html,
 body {
-	/* background: #201f32; */
-	background: green;
+	background: #201f32;
+	/* background: green; */
 	color: #fff;
 }
 /* -------------NavBar------------- */
@@ -32,6 +32,7 @@ body {
 	align-items: center;
 	background: #3a497d;
 	height: auto;
+	z-index: 5;
 }
 .navbar ul {
 	display: flex;
@@ -77,15 +78,15 @@ body {
 }
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(1, 1fr);
 	grid-gap: 0.5rem;
-	padding: 0;
+	padding: 2rem;
 	text-align: center;
-	font-size: 4rem;
+	/* font-size: 4rem; */
 	flex-wrap: wrap;
 	justify-content: center;
-	overflow: auto;
+	overflow: hidden;
 }
 /* -------------MovieCard------------- */
 .movie-card {
@@ -97,19 +98,19 @@ body {
 	min-height: calc(100vh - 58px);
 	position: relative;
 	z-index: 1;
+	overflow: hidden;
 }
-/* .movie-title::before {
-	content: '';
+.bg-filter {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	min-height: calc(100vh - 58px);
-	background: #000;
-	z-index: -2;
-	filter: blur(2px);
-	-webkit-filter: blur(2px);
-} */
+	top: 0;
+	left: 0;
+	z-index: -1;
+	filter: blur(3px);
+	background: no-repeat center center/cover;
+}
+
 .movie-title::after {
 	content: '';
 	background: #000;
