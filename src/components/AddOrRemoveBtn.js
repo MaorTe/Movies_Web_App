@@ -5,7 +5,6 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 	const [isExist, setIsExist] = useState(null);
 
 	useEffect(() => {
-		// console.log(isExist);
 		const buttonInit = () => {
 			const tableData = JSON.parse(localStorage.getItem('tableData'));
 			const isIdExist = tableData.findIndex((el) => el.id === id);
@@ -15,12 +14,11 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 		buttonInit();
 	}, []);
 
-	const onPosterClick1 = () => {
+	const onPosterClick = () => {
 		!isExist
 			? setIsExist(MyUtilFunc(id, poster, title, type))
 			: setIsExist(removeMovie());
 		onButtonClick();
-		// setButtonName(!buttonName);
 	};
 	const removeMovie = () => {
 		const tableData = JSON.parse(localStorage.getItem('tableData'));
@@ -30,7 +28,7 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 		return false;
 	};
 	return (
-		<button onClick={() => onPosterClick1()}>
+		<button onClick={() => onPosterClick()}>
 			{isExist ? 'Remove from Watchlist' : 'Add To Watchlist'}
 		</button>
 	);

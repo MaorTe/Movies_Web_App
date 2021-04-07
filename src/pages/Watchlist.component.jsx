@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
 const Watchlist = () => {
@@ -15,16 +14,6 @@ const Watchlist = () => {
 		fetchLocalData();
 	}, [tableData.length]);
 
-	//remove item by finding the id
-	const onRemoveItem = () => {
-		const tableData = JSON.parse(localStorage.getItem('tableData'));
-
-		// tableData.splice('index', 1);
-		// tableData.forEach((person, index) => {
-		// 	person.id = index;
-		// });
-		localStorage.setItem('tableData', JSON.stringify(tableData));
-	};
 	const onButtonClick = () => {
 		const tableData = JSON.parse(localStorage.getItem('tableData'));
 		setWatchlist(tableData.map((el) => el));

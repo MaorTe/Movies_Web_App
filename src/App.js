@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound.component';
 import { useEffect } from 'react';
 import MovieDetails from './pages/MovieDetails.component';
 import Watchlist from './pages/Watchlist.component';
+import SearchResults from './pages/SearchResults.component';
 
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
@@ -46,6 +47,7 @@ function App() {
 						path="/MovieDetails/:type/:id"
 						component={MovieDetails}
 					/>
+					<Route exact path="/SearchResults/:query" component={SearchResults} />
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

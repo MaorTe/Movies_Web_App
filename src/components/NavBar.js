@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from './Search';
 
 const NavBar = ({ className }) => {
 	return (
@@ -11,6 +13,9 @@ const NavBar = ({ className }) => {
 					<Link to="/Watchlist">Watchlist</Link>
 				</li>
 			</ul>
+			<div>
+				<Search></Search>
+			</div>
 		</div>
 	);
 };
