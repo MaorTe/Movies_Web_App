@@ -10,7 +10,7 @@ const Search = () => {
 			push(`/SearchResults/q=${term}`);
 		};
 
-		//on init dont run search
+		//on init don't run search
 		// if (term) {
 		// 	search();
 		// } else {

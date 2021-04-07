@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 const ScrollComponent = () => {
@@ -6,7 +6,7 @@ const ScrollComponent = () => {
 	const [loading, setLoading] = useState(false);
 	const [page, setPage] = useState(0);
 	const [prevY, setPrevY] = useState(0);
-	// add loader refrence
+	// add loader reference
 	const loadingRef = useRef(null);
 	useEffect(() => {
 		const func = () => {

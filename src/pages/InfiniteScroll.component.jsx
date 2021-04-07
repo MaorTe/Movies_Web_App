@@ -19,7 +19,7 @@ const InfiniteScroll = () => {
 	});
 	// tracking on which page we currently are
 	const [page, setPage] = useState(1);
-	// add loader refrence
+	// add loader reference
 	const loader = useRef(null);
 
 	useEffect(() => {

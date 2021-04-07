@@ -3,16 +3,14 @@ import { useParams } from 'react-router-dom';
 import API from '../api/API';
 // import MovieCard from '../components/MovieCard';
 import MovieCard from '../components/MovieCard';
+import ScrollArrow from '../components/ScrollArrow';
 import InfiniteScroll from './InfiniteScroll.component';
 // import MovieCard from '../components/MovieCard';
 
 const Categories = () => {
-	// const [postList, setPostList] = useState({
-	// 	list: [1, 2, 3, 4],
-	// });
 	// tracking on which page we currently are
 	const [page, setPage] = useState(0);
-	// add loader refrence
+	// add loader reference
 	const loader = useRef(null);
 
 	const [movies, setMoviesTop] = useState([]);
@@ -81,8 +79,9 @@ const Categories = () => {
 					onButtonClick={onPosterClick}
 				/>
 			))}
+			<ScrollArrow></ScrollArrow>
 			<div className="loading" ref={loader}>
-				<h2>Load More</h2>
+				<h2>Loading...</h2>
 			</div>
 		</div>
 	);
