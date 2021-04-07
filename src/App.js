@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import MovieDetails from './pages/MovieDetails.component';
 import Watchlist from './pages/Watchlist.component';
 import SearchResults from './pages/SearchResults.component';
+import Categories from './pages/Categories.component';
 
 function App() {
 	// const API_KEY = 'apikey=1ff185cc';
@@ -47,7 +48,18 @@ function App() {
 						path="/MovieDetails/:type/:id"
 						component={MovieDetails}
 					/>
-					<Route exact path="/SearchResults/:query" component={SearchResults} />
+					<Route
+						exact
+						// movies/latest/page/1
+						// path="/Categories/:type/:top/:id"
+						path="/Categories/:type"
+						component={Categories}
+					/>
+					<Route
+						exact
+						path="/SearchResults/q=:query"
+						component={SearchResults}
+					/>
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import API from '../api/API';
-import SearchResults from '../pages/SearchResults.component';
+import { useHistory } from 'react-router-dom';
 
 const Search = () => {
 	const [term, setTerm] = useState('');
@@ -9,7 +7,7 @@ const Search = () => {
 
 	useEffect(() => {
 		const search = async () => {
-			push(`/SearchResults/${term}`);
+			push(`/SearchResults/q=${term}`);
 		};
 
 		//on init dont run search
@@ -33,17 +31,28 @@ const Search = () => {
 		setTerm(e.target.value);
 	};
 	return (
-		<div>
-			<form className="ui form">
-				<div className="field">
-					<label>Enter Search Term</label>
+		<div className="wrapper">
+			<div className="container">
+				<form role="search" method="get" className="search-form form" action="">
+					<label>
+						<span className="screen-reader-text">Search for...</span>
+
+						<input
+							type="search"
+							className="search-field"
+							placeholder="Type something..."
+							value={term}
+							onChange={(e) => handleSearchQuery(e)}
+							// name="s"
+						/>
+					</label>
 					<input
-						value={term}
-						onChange={(e) => handleSearchQuery(e)}
-						className="input"
+						type="submit"
+						className="search-submit button"
+						value="&#xf002;"
 					/>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	);
 };

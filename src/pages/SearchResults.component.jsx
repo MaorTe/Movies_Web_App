@@ -9,7 +9,6 @@ const SearchResults = () => {
 	console.log(params);
 	// @ts-ignore
 	const query = params.query;
-	console.log(query);
 	useEffect(() => {
 		const search = async () => {
 			const { data } = await API.get(
@@ -20,7 +19,10 @@ const SearchResults = () => {
 					return {
 						id: el.id,
 						title: el.title,
-						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
+						poster:
+							(el.poster_path &&
+								`https://image.tmdb.org/t/p/original${el.poster_path}`) ||
+							`https://ofilmdb.com/assets/img/cover.jpg`,
 						type: 'movie',
 					};
 				})
@@ -29,24 +31,9 @@ const SearchResults = () => {
 		search();
 	}, [query]);
 
-	// const renderedResults = results.map((result) => {
-	// 	return (
-	// 		<div key={result.pageid} className="item">
-	// 			<div className="right floated content">
-	// 				<a
-	// 					className="ui button"
-	// 					href={`https://en.wikipedia.org?curid=${result.pageid}`}>
-	// 					Go
-	// 				</a>
-	// 			</div>
-	// 			<div className="content">
-	// 				<div className="header">{result.title}</div>
-	// 				<span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
-	// 			</div>
-	// 		</div>
-	// 	);
-	// });
-
+	const onPosterClick = (movieID) => {
+		console.log(movieID);
+	};
 	return (
 		<div className="grid-container">
 			{results.map((movie, index) => (
@@ -56,7 +43,7 @@ const SearchResults = () => {
 					title={movie.title}
 					poster={movie.poster}
 					type={movie.type}
-					onButtonClick={'onPosterClick'}
+					onButtonClick={onPosterClick}
 				/>
 			))}
 		</div>

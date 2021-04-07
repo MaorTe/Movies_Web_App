@@ -18,6 +18,7 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 		!isExist
 			? setIsExist(MyUtilFunc(id, poster, title, type))
 			: setIsExist(removeMovie());
+		// onButtonClick &&
 		onButtonClick();
 	};
 	const removeMovie = () => {

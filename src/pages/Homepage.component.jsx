@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../api/API';
 // import MovieCard from '../components/MovieCard';
 import Carousel from '../components/Carousel';
@@ -34,7 +35,7 @@ const Homepage = () => {
 						id: el.id,
 						title: el.title,
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
-						type: 'movie'
+						type: 'movie',
 					};
 				})
 			);
@@ -44,17 +45,17 @@ const Homepage = () => {
 						id: el.id,
 						title: el.name,
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
-						type: 'tv'
+						type: 'tv',
 					};
 				})
 			);
+
 			// } catch (e) {
 			// 	console.log(e.message);
 			// }
 		};
 		FetchData();
 	}, []);
-
 
 	const onPosterClick = (movieID) => {
 		//iterate over the database and find the correct id/title then move to the correct movie
@@ -64,11 +65,22 @@ const Homepage = () => {
 
 	return (
 		<div className="homepage">
-			<h1>Movies-Top</h1>
+			<div className="flex">
+				<h1>Movies-Top</h1>
+				<Link className="category-link" to={`/Categories/movie`}>
+					view all
+				</Link>
+			</div>
 			<div>
 				<Carousel data={moviesTop} onPosterClick={onPosterClick}></Carousel>
 			</div>
-			<h1>Series-Top</h1>
+
+			<div className="flex">
+				<h1>Series-Top</h1>
+				<Link className="category-link" to={`/Categories/tv`}>
+					view all
+				</Link>
+			</div>
 			<div>
 				<Carousel data={seriesTop} onPosterClick={onPosterClick}></Carousel>
 			</div>
