@@ -30,6 +30,7 @@ const Search = () => {
 	const handleSearchQuery = (e) => {
 		setTerm(e.target.value);
 	};
+
 	return (
 		<div className="wrapper">
 			<div className="container">

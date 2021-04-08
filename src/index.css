@@ -206,7 +206,7 @@ input.search-submit {
 	margin: 15px;
 }
 .movie-details-container {
-	min-height: calc(100vh - 58px);
+	min-height: calc(100vh - 62px);
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
@@ -214,7 +214,7 @@ input.search-submit {
 .bg-filter {
 	position: absolute;
 	width: 100%;
-	min-height: calc(100vh - 58px);
+	min-height: calc(100vh - 62px);
 	top: 0;
 	left: 0;
 	z-index: -1;
@@ -228,7 +228,7 @@ input.search-submit {
 	opacity: 0.5;
 	position: absolute;
 	width: 100%;
-	min-height: calc(100vh - 58px);
+	min-height: calc(100vh - 62px);
 	top: 0;
 	left: 0;
 	z-index: -1;
@@ -377,6 +377,7 @@ svg {
 .more-info {
 	outline: 0;
 	color: #c1cbec;
+	cursor: pointer;
 	/* font-weight: bold; */
 }
 .margin-top {

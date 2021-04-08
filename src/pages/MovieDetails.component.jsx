@@ -29,6 +29,9 @@ const MovieDetails = ({ onButtonClick }) => {
 				summary: data.overview,
 				type: type,
 				rate: data.vote_average,
+				imdb: data.imdb_id
+					? `https://www.imdb.com/title/${data.imdb_id}`
+					: data.homepage,
 			});
 		};
 		FetchData();
@@ -60,7 +63,9 @@ const MovieDetails = ({ onButtonClick }) => {
 					/>
 					<div className="flex-start">
 						{movie.releaseDate.slice(0, 4)}
-						{<FaImdb className="plusIcon"></FaImdb>}
+						<a href={movie.imdb} target="_blank" rel="noreferrer">
+							{<FaImdb className="plusIcon"></FaImdb>}
+						</a>
 						{movie.rate}
 						{<FaStar className="plusIcon star"></FaStar>}
 					</div>
