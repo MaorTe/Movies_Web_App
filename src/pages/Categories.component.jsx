@@ -4,13 +4,13 @@ import API from '../api/API';
 // import MovieCard from '../components/MovieCard';
 import MovieCard from '../components/MovieCard';
 import ScrollArrow from '../components/ScrollArrow';
-import InfiniteScroll from './InfiniteScroll.component';
+// import InfiniteScroll from './InfiniteScroll.component';
 // import MovieCard from '../components/MovieCard';
 
 const Categories = () => {
 	// tracking on which page we currently are
 	const [page, setPage] = useState(0);
-	// add loader reference
+	// add loader refrence
 	const loader = useRef(null);
 
 	const [movies, setMoviesTop] = useState([]);

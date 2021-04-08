@@ -8,14 +8,18 @@ const NavBar = ({ className }) => {
 			<ul>
 				<li>
 					{/* <Link to="/"> */}
-					<img src={logo} alt="" width="100" />
+					<img src={logo} alt="" width="115" />
 					{/* </Link> */}
 				</li>
 				<li>
-					<Link to="/">Home</Link>
+					<Link to="/">
+						<h3>Home</h3>
+					</Link>
 				</li>
 				<li>
-					<Link to="/Watchlist">Watchlist</Link>
+					<Link to="/Watchlist">
+						<h3>Watchlist</h3>
+					</Link>
 				</li>
 			</ul>
 			<Search></Search>

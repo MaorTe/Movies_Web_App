@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaImdb, FaStar } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import API from '../api/API';
 import AddOrRemoveBtn from '../components/AddOrRemoveBtn';
@@ -27,6 +28,7 @@ const MovieDetails = ({ onButtonClick }) => {
 				genre: data.genres.map((el) => el.name).join(' | '),
 				summary: data.overview,
 				type: type,
+				rate: data.vote_average,
 			});
 		};
 		FetchData();
@@ -46,25 +48,37 @@ const MovieDetails = ({ onButtonClick }) => {
 								`url(https://image.tmdb.org/t/p/original${movie.bgPoster})`) ||
 							`red`,
 					}}></div>
-				<div className="movie-title">{movie.title}</div>
-				<div>{movie.releaseDate.slice(0, 4)}</div>
-				<div>{movie.genre}</div>
-				{movie.logoPath && (
-					<img
-						src={`https://image.tmdb.org/t/p/original${movie.logoPath}`}
-						alt=""
-						width="200"
-					/>
-				)}
-				<div>{movie.summary}</div>
+				<div className="movie-details-content">
+					<h1 className="movie-title textbox">{movie.title}</h1>
 
-				<AddOrRemoveBtn
-					id={movie.id}
-					title={movie.title}
-					poster={`https://image.tmdb.org/t/p/original${movie.poster}`}
-					type={movie.type}
-					onButtonClick={onButtonClick || onPosterClick}
-				/>
+					<AddOrRemoveBtn
+						id={movie.id}
+						title={movie.title}
+						poster={`https://image.tmdb.org/t/p/original${movie.poster}`}
+						type={movie.type}
+						onButtonClick={onButtonClick || onPosterClick}
+					/>
+					<div className="flex-start">
+						{movie.releaseDate.slice(0, 4)}
+						{<FaImdb className="plusIcon"></FaImdb>}
+						{movie.rate}
+						{<FaStar className="plusIcon star"></FaStar>}
+					</div>
+					<div>{movie.genre}</div>
+					{movie.logoPath && (
+						<img
+							src={`https://image.tmdb.org/t/p/original${movie.logoPath}`}
+							alt=""
+							width="200"
+							className="margin-top"
+						/>
+					)}
+
+					<details>
+						<summary className="more-info">Show More +</summary>
+						<p>{movie.summary}</p>
+					</details>
+				</div>
 			</div>
 		);
 	}

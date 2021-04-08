@@ -12,13 +12,12 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 			isIdExist === -1 ? setIsExist(false) : setIsExist(true);
 		};
 		buttonInit();
-	}, []);
+	}, [isExist]);
 
 	const onPosterClick = () => {
 		!isExist
 			? setIsExist(MyUtilFunc(id, poster, title, type))
 			: setIsExist(removeMovie());
-		// onButtonClick &&
 		onButtonClick();
 	};
 	const removeMovie = () => {
@@ -29,7 +28,7 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 		return false;
 	};
 	return (
-		<button onClick={() => onPosterClick()}>
+		<button className="btn third" onClick={() => onPosterClick()}>
 			{isExist ? 'Remove from Watchlist' : 'Add To Watchlist'}
 		</button>
 	);
