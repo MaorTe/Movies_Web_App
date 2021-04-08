@@ -47,6 +47,17 @@ const Carousel = ({ data, onPosterClick }) => {
 			},
 		],
 	};
+	// const StyledSlider = styled(Slider)`
+	// 	.slick-list {
+	// 		padding: 0;
+	// 	}
+	// `;
+	// const Image = styled.img`
+	// 	background-size: cover;
+	// 	width: 100%;
+	// 	height: 100%;
+	// `;
+
 	return (
 		<div>
 			<Slider {...settings}>

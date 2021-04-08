@@ -10,7 +10,7 @@ import ScrollArrow from '../components/ScrollArrow';
 const Categories = () => {
 	// tracking on which page we currently are
 	const [page, setPage] = useState(0);
-	// add loader refrence
+	// add loader reference
 	const loader = useRef(null);
 
 	const [movies, setMoviesTop] = useState([]);
