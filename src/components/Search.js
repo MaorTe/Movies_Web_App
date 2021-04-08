@@ -51,6 +51,7 @@ const Search = () => {
 						type="submit"
 						className="search-submit button"
 						value="&#xf002;"
+						disabled
 					/>
 				</form>
 			</div>
