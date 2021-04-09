@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import API from '../api/API';
 // import MovieCard from '../components/MovieCard';
 import Carousel from '../components/Carousel';
+import MyLoader from '../components/MyLoader';
 // import MovieCard from '../components/MovieCard';
 
 const Homepage = () => {
@@ -84,6 +85,7 @@ const Homepage = () => {
 			<div>
 				<Carousel data={seriesTop} onPosterClick={onPosterClick}></Carousel>
 			</div>
+			<MyLoader></MyLoader>
 		</div>
 	);
 };

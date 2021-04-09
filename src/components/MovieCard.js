@@ -3,7 +3,7 @@ import AddOrRemoveBtn from './AddOrRemoveBtn';
 
 const MovieCard = ({ title, poster, id, type, onButtonClick }) => {
 	return (
-		<div style={{ height: 600 }}>
+		<div style={{ height: 600, background: 'rgba(0, 0, 0, 0.05)' }}>
 			<Link to={`/MovieDetails/${type}/${id}`}>
 				<img src={poster} className="img-select" alt="" width="300" />
 			</Link>
