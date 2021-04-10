@@ -81,9 +81,9 @@ input[type='search'] {
 	border-radius: 0.25rem;
 	border: 1px solid #e0e0e5;
 	font-size: 1rem;
-	width: 100%;
+	width: 55vw;
 	line-height: 2;
-	padding: 0.375rem 1.25rem;
+	padding: 0.375rem 0.5rem;
 	-webkit-transition: border-color 0.2s;
 	-moz-transition: border-color 0.2s;
 	transition: border-color 0.2s;
