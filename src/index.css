@@ -128,7 +128,9 @@ input.search-submit {
 	font-family: 'Font Awesome 5 Free';
 	font-size: 1rem;
 }
-
+input.search-submit:hover {
+	cursor: not-allowed;
+}
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;

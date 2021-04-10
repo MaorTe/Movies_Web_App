@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../api/API';
-// import MovieCard from '../components/MovieCard';
 import MovieCard from '../components/MovieCard';
+import MyLoader from '../components/MyLoader';
 import ScrollArrow from '../components/ScrollArrow';
-// import InfiniteScroll from './InfiniteScroll.component';
-// import MovieCard from '../components/MovieCard';
 
 const Categories = () => {
 	// tracking on which page we currently are
@@ -81,6 +79,7 @@ const Categories = () => {
 			))}
 			<ScrollArrow></ScrollArrow>
 			<div className="loading" ref={loader}>
+				<MyLoader></MyLoader>
 				<h2>Loading...</h2>
 			</div>
 		</div>

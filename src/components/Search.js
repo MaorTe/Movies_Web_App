@@ -18,6 +18,7 @@ const Search = () => {
 		const timeoutId = setTimeout(() => {
 			if (term) {
 				search();
+				setTerm('');
 			}
 		}, 1000);
 		//if the user wrote another string within 1 sec ,cancel last timeout and reset timer

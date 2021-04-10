@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
+import MyLoader from '../components/MyLoader';
 
 const Watchlist = () => {
 	const [watchlist, setWatchlist] = useState([]);
@@ -19,17 +20,21 @@ const Watchlist = () => {
 		setWatchlist(tableData.map((el) => el));
 	};
 	return (
-		<div className="grid-container">
-			{watchlist.map((movie, index) => (
-				<MovieCard
-					key={index}
-					id={movie.id}
-					title={movie.title}
-					poster={movie.poster}
-					type={movie.type}
-					onButtonClick={onButtonClick}
-				/>
-			))}
+		<div>
+			{watchlist.length ? (
+				watchlist.map((movie, index) => (
+					<MovieCard
+						key={index}
+						id={movie.id}
+						title={movie.title}
+						poster={movie.poster}
+						type={movie.type}
+						onButtonClick={onButtonClick}
+					/>
+				))
+			) : (
+				<h1>Watchlist is empty</h1>
+			)}
 		</div>
 	);
 };
