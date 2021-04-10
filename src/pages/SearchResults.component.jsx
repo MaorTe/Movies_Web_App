@@ -14,6 +14,7 @@ const SearchResults = () => {
 			const { data } = await API.get(
 				`3/search/movie?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=1&include_adult=false`
 			);
+			console.log(data);
 			setResults(
 				[...data.results].map((el) => {
 					return {
@@ -36,17 +37,21 @@ const SearchResults = () => {
 	};
 	return (
 		<div className="grid-container">
-			{results.map((movie, index) => (
-				<MovieCard
-					key={index}
-					id={movie.id}
-					title={movie.title}
-					poster={movie.poster}
-					type={movie.type}
-					width={200}
-					onButtonClick={onPosterClick}
-				/>
-			))}
+			{results.length ? (
+				results.map((movie, index) => (
+					<MovieCard
+						key={index}
+						id={movie.id}
+						title={movie.title}
+						poster={movie.poster}
+						type={movie.type}
+						width={200}
+						onButtonClick={onPosterClick}
+					/>
+				))
+			) : (
+				<h1>No results</h1>
+			)}
 		</div>
 	);
 };
