@@ -414,6 +414,7 @@ input.search-submit:hover {
 	.grid-container.movie-card-container,
 	.movie-card-container {
 		height: 315px;
+		width: 167px;
 	}
 	.btn {
 		font-size: 0.8rem;

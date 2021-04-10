@@ -89,10 +89,10 @@ const Categories = () => {
 				{window.innerWidth < 520 ? (
 					<>
 						<span ref={loader}>
-							{/* <MyLoader /> */}
-							<h2>Loading...</h2>
+							<MyLoader />
+							{/* <h2>Loading...</h2> */}
 						</span>
-						{/* <MyLoader /> */}
+						<MyLoader />
 					</>
 				) : (
 					<>
