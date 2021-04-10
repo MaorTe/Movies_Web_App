@@ -34,7 +34,7 @@ const Search = () => {
 	};
 
 	return (
-		<div className="flex">
+		<div className="flex-center">
 			<ToggleButton
 				selected={selected}
 				toggleSelected={() => {
