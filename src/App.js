@@ -57,7 +57,7 @@ function App() {
 					/>
 					<Route
 						exact
-						path="/SearchResults/q=:query"
+						path="/SearchResults/:type/q=:query"
 						component={SearchResults}
 					/>
 					<Route component={NotFound} />

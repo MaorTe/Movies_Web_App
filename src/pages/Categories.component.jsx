@@ -41,7 +41,8 @@ const Categories = () => {
 					id: el.id,
 					title: el.title || el.name,
 					poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
-					type: type === 'movie' ? 'movie' : 'tv',
+					// type: type === 'movie' ? 'movie' : 'tv',
+					type: type,
 				};
 			});
 			setMoviesTop([...movies, ...movieArr]);

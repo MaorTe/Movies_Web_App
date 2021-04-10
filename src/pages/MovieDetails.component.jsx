@@ -23,7 +23,10 @@ const MovieDetails = ({ onButtonClick }) => {
 				title: data.title || data.name,
 				poster: data.poster_path,
 				bgPoster: data.backdrop_path || null,
-				logoPath: data.production_companies[0].logo_path || null,
+				logoPath:
+					data.production_companies.length > 0
+						? data.production_companies[0].logo_path
+						: null,
 				releaseDate: data.release_date || data.first_air_date,
 				genre: data.genres.map((el) => el.name).join(' | '),
 				summary: data.overview,
