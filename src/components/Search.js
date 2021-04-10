@@ -5,7 +5,7 @@ import ToggleButton from './ToggleButton';
 const Search = () => {
 	const [term, setTerm] = useState('');
 	const [type, setType] = useState('movie');
-	const [selected, setSelected] = useState(false);
+	const [selected, setSelected] = useState(true);
 	const { push } = useHistory();
 
 	useEffect(() => {
@@ -39,7 +39,7 @@ const Search = () => {
 				selected={selected}
 				toggleSelected={() => {
 					setSelected(!selected);
-					selected ? setType('movie') : setType('tv');
+					selected ? setType('tv') : setType('movie');
 				}}
 			/>
 			<form role="search" method="get" className="search-form form" action="">
