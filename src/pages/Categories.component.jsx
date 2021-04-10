@@ -65,11 +65,6 @@ const Categories = () => {
 		console.log(movieID);
 	};
 
-	// const mobileCheck=()=>{
-	// 	if(window.innerWidth){
-	// 		return (<MyLoader /><MyLoader />)
-	// 	}
-	// }
 	return (
 		<>
 			<div className="grid-container">
