@@ -41,22 +41,12 @@ const Carousel = ({ data, onPosterClick }) => {
 			{
 				breakpoint: 480,
 				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
+					slidesToShow: 2,
+					slidesToScroll: 2,
 				},
 			},
 		],
 	};
-	// const StyledSlider = styled(Slider)`
-	// 	.slick-list {
-	// 		padding: 0;
-	// 	}
-	// `;
-	// const Image = styled.img`
-	// 	background-size: cover;
-	// 	width: 100%;
-	// 	height: 100%;
-	// `;
 
 	return (
 		<div>
@@ -68,6 +58,7 @@ const Carousel = ({ data, onPosterClick }) => {
 						title={movie.title}
 						poster={movie.poster}
 						type={movie.type}
+						width={300}
 						onButtonClick={onPosterClick}
 					/>
 				))}

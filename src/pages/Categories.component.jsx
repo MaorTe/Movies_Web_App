@@ -65,24 +65,47 @@ const Categories = () => {
 		console.log(movieID);
 	};
 
+	// const mobileCheck=()=>{
+	// 	if(window.innerWidth){
+	// 		return (<MyLoader /><MyLoader />)
+	// 	}
+	// }
 	return (
-		<div className="grid-container">
-			{movies.map((movie, index) => (
-				<MovieCard
-					key={index}
-					id={movie.id}
-					title={movie.title}
-					poster={movie.poster}
-					type={movie.type}
-					onButtonClick={onPosterClick}
-				/>
-			))}
-			<ScrollArrow></ScrollArrow>
-			<div className="loading" ref={loader}>
-				<MyLoader></MyLoader>
-				<h2>Loading...</h2>
+		<>
+			<div className="grid-container">
+				{console.log(window.innerWidth)}
+				{movies.map((movie, index) => (
+					<MovieCard
+						key={index}
+						id={movie.id}
+						title={movie.title}
+						poster={movie.poster}
+						type={movie.type}
+						width={250}
+						onButtonClick={onPosterClick}
+					/>
+				))}
+				<ScrollArrow></ScrollArrow>
+				{window.innerWidth < 520 ? (
+					<>
+						<span ref={loader}>
+							{/* <MyLoader /> */}
+							<h2>Loading...</h2>
+						</span>
+						{/* <MyLoader /> */}
+					</>
+				) : (
+					<>
+						<MyLoader />
+						<MyLoader />
+						<span ref={loader}>
+							<MyLoader />
+						</span>
+						<MyLoader />
+					</>
+				)}
 			</div>
-		</div>
+		</>
 	);
 };
 export default Categories;

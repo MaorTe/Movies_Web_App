@@ -43,6 +43,7 @@ const SearchResults = () => {
 					title={movie.title}
 					poster={movie.poster}
 					type={movie.type}
+					width={200}
 					onButtonClick={onPosterClick}
 				/>
 			))}

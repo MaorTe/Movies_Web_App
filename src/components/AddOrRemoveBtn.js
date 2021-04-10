@@ -28,9 +28,11 @@ const AddOrRemoveBtn = ({ id, poster, title, type, onButtonClick }) => {
 		return false;
 	};
 	return (
-		<button className="btn third" onClick={() => onPosterClick()}>
-			{isExist ? 'Remove from Watchlist' : 'Add To Watchlist'}
-		</button>
+		<div className="flex-center">
+			<button className="btn third" onClick={() => onPosterClick()}>
+				{isExist ? 'Remove from Watchlist' : 'Add To Watchlist'}
+			</button>
+		</div>
 	);
 };
 

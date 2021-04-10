@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
-import MyLoader from '../components/MyLoader';
+// import MyLoader from '../components/MyLoader';
 
 const Watchlist = () => {
 	const [watchlist, setWatchlist] = useState([]);
@@ -20,7 +20,7 @@ const Watchlist = () => {
 		setWatchlist(tableData.map((el) => el));
 	};
 	return (
-		<div>
+		<div className="grid-container">
 			{watchlist.length ? (
 				watchlist.map((movie, index) => (
 					<MovieCard
@@ -29,6 +29,7 @@ const Watchlist = () => {
 						title={movie.title}
 						poster={movie.poster}
 						type={movie.type}
+						width={200}
 						onButtonClick={onButtonClick}
 					/>
 				))

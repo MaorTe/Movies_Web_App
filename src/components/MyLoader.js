@@ -1,20 +1,22 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-
+let skeletonWidth = 0;
+let skeletonHeight = 0;
 const MyLoader = (props) => (
-	<ContentLoader
-		speed={2}
-		width={400}
-		height={460}
-		viewBox="0 0 400 460"
-		backgroundColor="#155ee5"
-		foregroundColor="#3f189a"
-		{...props}>
-		<circle cx="31" cy="31" r="15" />
-		<rect x="58" y="18" rx="2" ry="2" width="140" height="10" />
-		<rect x="58" y="34" rx="2" ry="2" width="140" height="10" />
-		<rect x="0" y="60" rx="2" ry="2" width="400" height="400" />
-	</ContentLoader>
+	<div className="flex-center movie-card-container">
+		{console.log(window.innerWidth)}
+		<ContentLoader
+			speed={2}
+			width={(skeletonWidth = window.innerWidth < 520 ? 150 : 340)}
+			height={(skeletonHeight = window.innerWidth < 520 ? 150 : 295)}
+			viewBox={`-80 0 340 295`}
+			backgroundColor="#155ee5"
+			foregroundColor="#3f189a"
+			{...props}>
+			<rect x="16" y="0" rx="13" ry="13" width="171" height="267" />
+			<rect x="19" y="280" rx="0" ry="0" width="163" height="12" />
+		</ContentLoader>
+	</div>
 );
 
 export default MyLoader;
