@@ -76,7 +76,8 @@ const Categories = () => {
 						title={movie.title}
 						poster={movie.poster}
 						type={movie.type}
-						width={250}
+						width={200}
+						height={300}
 						onButtonClick={onPosterClick}
 					/>
 				))}

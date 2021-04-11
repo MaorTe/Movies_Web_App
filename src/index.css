@@ -32,6 +32,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 }
+
 .flex-center {
 	display: flex;
 	justify-content: center;
@@ -179,14 +180,14 @@ input.search-submit:hover {
 
 /* -------------Homepage------------- */
 
-.homepage .slick-prev {
-	left: 3% !important;
+/* .homepage .slick-prev {
+	left: 1% !important;
 	z-index: 1;
 }
 .homepage .slick-next {
-	right: 3% !important;
+	right: 1% !important;
 	z-index: 1;
-}
+} */
 
 .homepage {
 	min-height: calc(100vh - 50px);
@@ -195,6 +196,26 @@ input.search-submit:hover {
 	justify-content: center;
 	align-items: center; */
 }
+.homepage .movie-card-container .img-select {
+	margin: 0 auto;
+}
+.homepage .movie-card-container {
+	text-align: center;
+}
+.slick-dots li button:before {
+	font-size: 16px !important;
+	color: gray !important;
+}
+.slick-dots li.slick-active button:before {
+	color: #fff !important;
+}
+.homepage .slick-list {
+	padding: 1.5rem 0 0.5rem 0;
+}
+.homepage .slick-dots {
+	margin-bottom: 25px;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -211,7 +232,11 @@ input.search-submit:hover {
 .movie-card {
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 	margin: 15px;
+}
+.slick-slide img {
+	margin: 0 auto;
 }
 .movie-details-container {
 	min-height: calc(100vh - 62px);
@@ -391,6 +416,7 @@ input.search-submit:hover {
 	margin: 3px;
 	/* background-color: hsl(216, 33%, 97%); */
 	/* box-shadow: 0 0 3px 3px hsl(210, 16%, 82%); */
+	margin: 0 auto;
 	transition: box-shadow 0.3s ease-in-out;
 }
 .img-select:hover {
@@ -449,6 +475,10 @@ input.search-submit:hover {
 	background: rgba(0, 0, 0, 0.05);
 }
 
+.grid-container .movie-card-container {
+	height: 420px;
+}
+
 @media all and (max-width: 520px) {
 	.movie-details-content {
 		width: 90vw;
@@ -458,6 +488,7 @@ input.search-submit:hover {
 	}
 	.img-select {
 		width: 150px;
+		height: 225px;
 	}
 	.grid-container {
 		grid-template-columns: repeat(2, 1fr);
@@ -470,6 +501,7 @@ input.search-submit:hover {
 		height: 315px;
 		width: 167px;
 	}
+
 	.btn {
 		font-size: 0.8rem;
 		padding: 0.8em;
@@ -493,5 +525,13 @@ input.search-submit:hover {
 	input[type='search'] {
 		width: 50vw;
 		padding: 0.375rem 0.5rem;
+	}
+	.homepage .slick-next {
+		right: -10px !important;
+		z-index: 1;
+	}
+	.homepage .slick-prev {
+		left: -10px !important;
+		z-index: 1;
 	}
 }

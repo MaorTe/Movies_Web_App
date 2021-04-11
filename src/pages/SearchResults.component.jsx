@@ -50,6 +50,7 @@ const SearchResults = () => {
 						poster={movie.poster}
 						type={movie.type}
 						width={200}
+						height={300}
 						onButtonClick={onPosterClick}
 					/>
 				))

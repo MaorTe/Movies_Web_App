@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import AddOrRemoveBtn from './AddOrRemoveBtn';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-const MovieCard = ({ title, poster, id, type, onButtonClick, width }) => {
+const MovieCard = ({ title, poster, id, type, onButtonClick, width ,height}) => {
 	return (
 		<div className="movie-card-container">
 			<Link to={`/MovieDetails/${type}/${id}`}>
@@ -10,6 +10,7 @@ const MovieCard = ({ title, poster, id, type, onButtonClick, width }) => {
 					alt={''}
 					src={poster} // use normal <img> attributes as props
 					width={width}
+					height={height}
 					className="img-select"
 					// height={100}
 				/>

@@ -8,7 +8,12 @@ const Homepage = () => {
 	const [seriesTop, setSeriesTop] = useState([]);
 	// const [moviesByRating, setMoviesByRating] = useState([]);
 	// const [seriesByRating, setSeriesByRating] = useState([]);
-
+	const [width, setWidth] = React.useState(window.innerWidth);
+	const updateWidth = () => setWidth(window.innerWidth);
+	useEffect(() => {
+		window.addEventListener('resize', updateWidth);
+		return () => window.removeEventListener('resize', updateWidth);
+	}, []);
 	useEffect(() => {
 		const FetchData = async () => {
 			// try {
@@ -70,7 +75,10 @@ const Homepage = () => {
 				</Link>
 			</div>
 			<div>
-				<Carousel data={moviesTop} onPosterClick={onPosterClick}></Carousel>
+				<Carousel
+					data={moviesTop}
+					onPosterClick={onPosterClick}
+					width={width}></Carousel>
 			</div>
 
 			<div className="flex">
@@ -80,7 +88,10 @@ const Homepage = () => {
 				</Link>
 			</div>
 			<div>
-				<Carousel data={seriesTop} onPosterClick={onPosterClick}></Carousel>
+				<Carousel
+					data={seriesTop}
+					onPosterClick={onPosterClick}
+					width={width}></Carousel>
 			</div>
 		</div>
 	);
