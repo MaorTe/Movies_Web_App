@@ -44,7 +44,7 @@ const SearchResults = () => {
 			{results.length ? (
 				results.map((movie, index) => (
 					<MovieCard
-						key={index}
+						key={movie.id}
 						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}

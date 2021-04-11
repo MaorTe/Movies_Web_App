@@ -24,7 +24,7 @@ const Watchlist = () => {
 			{watchlist.length ? (
 				watchlist.map((movie, index) => (
 					<MovieCard
-						key={index}
+						key={movie.id}
 						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}

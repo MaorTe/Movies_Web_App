@@ -3,7 +3,6 @@ import ContentLoader from 'react-content-loader';
 
 const MyLoader = (props) => (
 	<div className="flex-center movie-card-container">
-		{console.log(window.innerWidth)}
 		<ContentLoader
 			speed={2}
 			width={window.innerWidth < 520 ? 150 : 340}

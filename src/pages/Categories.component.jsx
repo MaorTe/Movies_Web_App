@@ -69,10 +69,9 @@ const Categories = () => {
 	return (
 		<>
 			<div className="grid-container">
-				{console.log(window.innerWidth)}
-				{movies.map((movie, index) => (
+				{movies.map((movie) => (
 					<MovieCard
-						key={index}
+						key={movie.id}
 						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}

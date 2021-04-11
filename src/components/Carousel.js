@@ -51,9 +51,9 @@ const Carousel = ({ data, onPosterClick }) => {
 	return (
 		<div>
 			<Slider {...settings}>
-				{data.map((movie, index) => (
+				{data.map((movie) => (
 					<MovieCard
-						key={index}
+						key={movie.id}
 						id={movie.id}
 						title={movie.title}
 						poster={movie.poster}
