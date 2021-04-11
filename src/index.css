@@ -201,6 +201,7 @@ input.search-submit:hover {
 }
 .homepage .movie-card-container {
 	text-align: center;
+	background: transparent;
 }
 .slick-dots li button:before {
 	font-size: 16px !important;
@@ -474,7 +475,9 @@ input.search-submit:hover {
 	height: 600px;
 	background: rgba(0, 0, 0, 0.05);
 }
-
+.homepage .movie-card-container {
+	background: none;
+}
 .grid-container .movie-card-container {
 	height: 420px;
 }

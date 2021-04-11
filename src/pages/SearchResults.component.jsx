@@ -1,40 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../api/API';
 import MovieCard from '../components/MovieCard';
+import MyLoader from '../components/MyLoader';
+import ScrollArrow from '../components/ScrollArrow';
 
 const SearchResults = () => {
+	// tracking on which page we currently are
+	const [page, setPage] = useState(0);
+	// add loader reference
+	const loader = useRef(null);
 	const [results, setResults] = useState([]);
 	const params = useParams();
-	console.log(params);
+
 	// @ts-ignore
 	const query = params.query;
 	// @ts-ignore
 	const type = params.type;
+
+	// useEffect for IntersectionObserver
+	// useEffect(() => {
+	// 	var options = {
+	// 		root: null,
+	// 		rootMargin: '20px',
+	// 		threshold: 1.0,
+	// 	};
+	// 	// initialize IntersectionObserver
+	// 	// and attaching to Load More div
+	// 	const observer = new IntersectionObserver(handleObserver, options);
+	// 	if (loader.current) {
+	// 		observer.observe(loader.current);
+	// 	}
+	// }, []);
+
 	useEffect(() => {
 		const search = async () => {
-			const { data } = await API.get(
-				`3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=1&include_adult=false`
+			const dataMovies = await API.get(
+				`3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${1}&include_adult=false`
 			);
 
-			console.log(data);
-			// '3/search/multi?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=hunter&page=1&include_adult=false'
-			setResults(
-				[...data.results].map((el) => {
-					return {
-						id: el.id,
-						title: el.title || el.name,
-						poster:
-							(el.poster_path &&
-								`https://image.tmdb.org/t/p/original${el.poster_path}`) ||
-							`https://ofilmdb.com/assets/img/cover.jpg`,
-						type: type,
-					};
-				})
-			);
+			console.log(dataMovies);
+			const movieArr = [...dataMovies.data.results].map((el) => {
+				return {
+					id: el.id,
+					title: el.title || el.name,
+					poster:
+						(el.poster_path &&
+							`https://image.tmdb.org/t/p/original${el.poster_path}`) ||
+						`https://ofilmdb.com/assets/img/cover.jpg`,
+					type: type,
+				};
+			});
+			// setResults([...movieArr, ...results]);
+			setResults([...movieArr]);
 		};
+		// console.log(results);
 		search();
 	}, [query, type]);
+	// }, [query, type, page]);
+
+	// const handleObserver = (entities) => {
+	// 	const target = entities[0];
+	// 	if (target.isIntersecting) {
+	// 		setPage((page) => page + 1);
+	// 	}
+	// };
 
 	const onPosterClick = (movieID) => {
 		console.log(movieID);
@@ -42,7 +72,7 @@ const SearchResults = () => {
 	return (
 		<div className="grid-container">
 			{results.length ? (
-				results.map((movie, index) => (
+				results.map((movie) => (
 					<MovieCard
 						key={movie.id}
 						id={movie.id}
@@ -57,6 +87,24 @@ const SearchResults = () => {
 			) : (
 				<h1>No results</h1>
 			)}
+			<ScrollArrow></ScrollArrow>
+			{/* {window.innerWidth < 520 ? (
+				<>
+					<span ref={loader}>
+						<MyLoader />
+					</span>
+					<MyLoader />
+				</>
+			) : (
+				<>
+					<MyLoader />
+					<MyLoader />
+					<span ref={loader}>
+						<MyLoader />
+					</span>
+					<MyLoader />
+				</>
+			)} */}
 		</div>
 	);
 };

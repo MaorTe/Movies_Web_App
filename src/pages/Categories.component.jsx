@@ -41,7 +41,6 @@ const Categories = () => {
 					id: el.id,
 					title: el.title || el.name,
 					poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
-					// type: type === 'movie' ? 'movie' : 'tv',
 					type: type,
 				};
 			});
@@ -50,6 +49,7 @@ const Categories = () => {
 			// 	console.log(e.message);
 			// }
 		};
+		console.log(movies);
 		FetchData();
 	}, [page]);
 
