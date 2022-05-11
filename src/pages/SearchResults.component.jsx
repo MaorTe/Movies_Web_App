@@ -6,107 +6,105 @@ import MyLoader from '../components/MyLoader';
 import ScrollArrow from '../components/ScrollArrow';
 
 const SearchResults = () => {
-	// tracking on which page we currently are
-	const [page, setPage] = useState(0);
-	// add loader reference
-	const loader = useRef(null);
-	const [results, setResults] = useState([]);
-	const params = useParams();
+   // tracking on which page we currently are
+   const [page, setPage] = useState(null);
+   // add loader reference
+   const loader = useRef(null);
 
-	// @ts-ignore
-	const query = params.query;
-	// @ts-ignore
-	const type = params.type;
+   const [results, setResults] = useState([]);
+   const params = useParams();
 
-	// useEffect for IntersectionObserver
-	// useEffect(() => {
-	// 	var options = {
-	// 		root: null,
-	// 		rootMargin: '20px',
-	// 		threshold: 1.0,
-	// 	};
-	// 	// initialize IntersectionObserver
-	// 	// and attaching to Load More div
-	// 	const observer = new IntersectionObserver(handleObserver, options);
-	// 	if (loader.current) {
-	// 		observer.observe(loader.current);
-	// 	}
-	// }, []);
+   // @ts-ignore
+   const query = params.query;
+   // @ts-ignore
+   const type = params.type;
 
-	useEffect(() => {
-		const search = async () => {
-			const dataMovies = await API.get(
-				`3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${1}&include_adult=false`
-			);
+   // useEffect for IntersectionObserver
+   useEffect(() => {
+      var options = {
+         root: null,
+         rootMargin: '300px',
+         threshold: 1.0,
+      };
+      // initialize IntersectionObserver
+      // and attaching to Load More div
+      const observer = new IntersectionObserver(handleObserver, options);
+      if (loader.current) {
+         observer.observe(loader.current);
+      }
+   }, []);
 
-			console.log(dataMovies);
-			const movieArr = [...dataMovies.data.results].map((el) => {
-				return {
-					id: el.id,
-					title: el.title || el.name,
-					poster:
-						(el.poster_path &&
-							`https://image.tmdb.org/t/p/original${el.poster_path}`) ||
-						`https://ofilmdb.com/assets/img/cover.jpg`,
-					type: type,
-				};
-			});
-			// setResults([...movieArr, ...results]);
-			setResults([...movieArr]);
-		};
-		// console.log(results);
-		search();
-	}, [query, type]);
-	// }, [query, type, page]);
+   useEffect(() => {
+      const search = async () => {
+         const dataMovies = await API.get(
+            `3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${page}&include_adult=false`,
+         );
+         console.log(page);
+         console.log(dataMovies);
+         const movies = [...dataMovies.data.results].map((el) => {
+            return {
+               id: el.id,
+               title: el.title || el.name,
+               poster:
+                  (el.poster_path && `https://image.tmdb.org/t/p/original${el.poster_path}`) ||
+                  `https://ofilmdb.com/assets/img/cover.jpg`,
+               type: type,
+            };
+         });
+         setResults([...results, ...movies]);
+      };
+      search();
+   }, [query, type, page]);
 
-	// const handleObserver = (entities) => {
-	// 	const target = entities[0];
-	// 	if (target.isIntersecting) {
-	// 		setPage((page) => page + 1);
-	// 	}
-	// };
+   const handleObserver = async (entries) => {
+      const target = entries[0];
+      console.log(target.isIntersecting);
+      if (target.isIntersecting) {
+         setPage((page) => page + 1);
+      }
+   };
 
-	const onPosterClick = (movieID) => {
-		console.log(movieID);
-	};
-	return (
-		<div className="grid-container">
-			{results.length ? (
-				results.map((movie) => (
-					<MovieCard
-						key={movie.id}
-						id={movie.id}
-						title={movie.title}
-						poster={movie.poster}
-						type={movie.type}
-						width={200}
-						height={300}
-						onButtonClick={onPosterClick}
-					/>
-				))
-			) : (
-				<h1>No results</h1>
-			)}
-			<ScrollArrow></ScrollArrow>
-			{/* {window.innerWidth < 520 ? (
-				<>
-					<span ref={loader}>
-						<MyLoader />
-					</span>
-					<MyLoader />
-				</>
-			) : (
-				<>
-					<MyLoader />
-					<MyLoader />
-					<span ref={loader}>
-						<MyLoader />
-					</span>
-					<MyLoader />
-				</>
-			)} */}
-		</div>
-	);
+   const onPosterClick = (movieID) => {
+      console.log(movieID);
+   };
+   return (
+      <div className="grid-container">
+         {results.length ? (
+            results.map((movie) => (
+               <MovieCard
+                  key={movie.id + 1 + movie.id + 2}
+                  id={movie.id}
+                  title={movie.title}
+                  poster={movie.poster}
+                  type={movie.type}
+                  width={200}
+                  height={300}
+                  onButtonClick={onPosterClick}
+               />
+            ))
+         ) : (
+            <h1>No results</h1>
+         )}
+         <ScrollArrow></ScrollArrow>
+         {window.innerWidth < 520 ? (
+            <>
+               <span ref={loader}>
+                  <MyLoader />
+               </span>
+               <MyLoader />
+            </>
+         ) : (
+            <>
+               <MyLoader />
+               <MyLoader />
+               <span ref={loader}>
+                  <MyLoader />
+               </span>
+               <MyLoader />
+            </>
+         )}
+      </div>
+   );
 };
 
 export default SearchResults;
