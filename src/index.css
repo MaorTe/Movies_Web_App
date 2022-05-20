@@ -68,17 +68,27 @@ body {
 
 .category-link {
 	cursor: pointer;
-	animation-name: spin-btn;
+	animation-name: bounce-btn;
 	animation-duration: 1000ms;
 	animation-iteration-count: 1;
 	animation-timing-function: linear;
 }
-@keyframes spin-btn {
-	from {
-		transform: rotate(0deg);
+
+@keyframes bounce-btn {
+	0% {
+		transform: scale(1, 1) translate(0px, 0px);
 	}
-	to {
-		transform: rotate(360deg);
+
+	30% {
+		transform: scale(1, 0.8) translate(0px, 10px);
+	}
+
+	75% {
+		transform: scale(1, 1.1) translate(0px, -25px);
+	}
+
+	100% {
+		transform: scale(1, 1) translate(0px, 0px);
 	}
 }
 
@@ -205,7 +215,17 @@ input.search-submit:hover {
 	right: 1% !important;
 	z-index: 1;
 } */
-
+.slick-next:before,
+.slick-prev:before {
+	font-size: 36px !important;
+	color: #d1caca !important;
+}
+.slick-next:before {
+	margin-left: -1em;
+}
+.slick-prev:before {
+	margin-right: -1em;
+}
 .homepage {
 	min-height: calc(100vh - 50px);
 	padding: 2rem;
@@ -229,6 +249,7 @@ input.search-submit:hover {
 }
 .homepage .slick-list {
 	padding: 1.5rem 0 0.5rem 0;
+	margin: 0 25px;
 }
 .homepage .slick-dots {
 	margin-bottom: 25px;
