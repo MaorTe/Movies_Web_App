@@ -322,13 +322,29 @@ input.search-submit:hover {
 	cursor: pointer;
 	transition: opacity 0.4s;
 	opacity: 0.5;
-	animation: bounce 2s 1;
+	animation: bounce 4s 1, pause-between-iterations 2s;
 }
 
 .scrollTop:hover {
 	opacity: 1;
 }
 
+@keyframes pause-between-iterations {
+	/* Other animation is visible for 50% of the time */
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	/* Other animation is hidden for 50% of the time */
+	50.1% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 @keyframes bounce {
 	0%,
 	20%,
