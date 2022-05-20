@@ -18,11 +18,11 @@ const Homepage = () => {
 		const FetchData = async () => {
 			// try {
 			const dataMovies = await API.get(
-				'3/movie/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1'
+				'3/movie/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1',
 			);
 			console.log(dataMovies.data);
 			const dataSeries = await API.get(
-				'3/tv/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1'
+				'3/tv/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1',
 			);
 			console.log(dataSeries);
 			// const { data } = await API.get(
@@ -40,7 +40,7 @@ const Homepage = () => {
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
 						type: 'movie',
 					};
-				})
+				}),
 			);
 			setSeriesTop(
 				[...dataSeries.data.results].map((el) => {
@@ -50,7 +50,7 @@ const Homepage = () => {
 						poster: `https://image.tmdb.org/t/p/original${el.poster_path}`,
 						type: 'tv',
 					};
-				})
+				}),
 			);
 
 			// } catch (e) {
@@ -70,7 +70,7 @@ const Homepage = () => {
 		<div className="homepage">
 			<div className="flex">
 				<h1>Movies-Top</h1>
-				<Link className="category-link" to={`/Categories/movie`}>
+				<Link className="category-link btn third" to={`/Categories/movie`}>
 					view all
 				</Link>
 			</div>
@@ -83,7 +83,7 @@ const Homepage = () => {
 
 			<div className="flex">
 				<h1>Series-Top</h1>
-				<Link className="category-link" to={`/Categories/tv`}>
+				<Link className="category-link btn third" to={`/Categories/tv`}>
 					view all
 				</Link>
 			</div>

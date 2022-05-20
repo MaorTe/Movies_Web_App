@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ToggleButton from './ToggleButton';
 
 const Search = () => {
 	const [term, setTerm] = useState('');
 	const [type, setType] = useState('movie');
 	const [selected, setSelected] = useState(true);
-	const { push } = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const search = async () => {
-			push(`/SearchResults/${type}/q=${term}`);
+			navigate(`/SearchResults/${type}/q=${term}`, { replace: true });
 		};
 
 		//on init don't run search

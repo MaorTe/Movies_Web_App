@@ -1,7 +1,6 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage.component';
-// import Products from './components/Products';
 import NotFound from './pages/NotFound.component';
 import { useEffect } from 'react';
 import MovieDetails from './pages/MovieDetails.component';
@@ -31,37 +30,38 @@ function App() {
 		<div>
 			<Router>
 				<NavBar className="navbar" />
-				<Switch>
+				<Routes>
 					{/* <Route
 						path="/dashboard"
 						render={(props) => <Homepage {...props} topRated={data} />}
 					/> */}
+
 					<Route
 						exact
 						path="/"
-						component={Homepage}
+						element={<Homepage />}
 						// component={() => <Homepage movieData={topRatedMovies} />}
 					/>
-					<Route exact path="/Watchlist" component={Watchlist} />
+					<Route exact path="/Watchlist" element={<Watchlist />} />
 					<Route
 						exact
 						path="/MovieDetails/:type/:id"
-						component={MovieDetails}
+						element={<MovieDetails />}
 					/>
 					<Route
 						exact
 						// movies/latest/page/1
 						// path="/Categories/:type/:top/:id"
 						path="/Categories/:type"
-						component={Categories}
+						element={<Categories />}
 					/>
 					<Route
 						exact
 						path="/SearchResults/:type/q=:query"
-						component={SearchResults}
+						element={<SearchResults />}
 					/>
-					<Route component={NotFound} />
-				</Switch>
+					<Route element={<NotFound />} />
+				</Routes>
 			</Router>
 		</div>
 	);

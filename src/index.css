@@ -65,6 +65,23 @@ body {
 	font-family: sans-serif;
 	font-size: 1rem;
 }
+
+.category-link {
+	cursor: pointer;
+	animation-name: spin-btn;
+	animation-duration: 1000ms;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+@keyframes spin-btn {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 .navbar a:hover {
 	color: #bbbbc1;
 	background: #303a62;
@@ -463,10 +480,37 @@ input.search-submit:hover {
 }
 .more-info {
 	outline: 0;
-	color: #c1cbec;
+	/* color: #c1cbec; */
+	color: #e0e0e5;
 	cursor: pointer;
-	/* font-weight: bold; */
+	font-size: 18px;
 }
+.more-info:hover {
+	color: #909dc7;
+	cursor: pointer;
+}
+.more-info::marker {
+	font-size: 10px;
+	color: #909dc7;
+	cursor: pointer;
+	animation: 3s ease-in 1s reverse both running font-change;
+	animation-iteration-count: 1;
+}
+@keyframes font-change {
+	from {
+		font-size: 18px;
+		color: white;
+	}
+	50% {
+		font-size: 30px;
+		color: white;
+	}
+	to {
+		font-size: 18px;
+		color: white;
+	}
+}
+
 .margin-top {
 	margin-top: 20px;
 	margin-bottom: 20px;
