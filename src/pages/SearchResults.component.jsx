@@ -39,8 +39,6 @@ const SearchResults = () => {
          const dataMovies = await API.get(
             `3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${page}&include_adult=false`,
          );
-         console.log(page);
-         console.log(dataMovies);
          const movies = [...dataMovies.data.results].map((el) => {
             return {
                id: el.id,
@@ -58,7 +56,6 @@ const SearchResults = () => {
 
    const handleObserver = async (entries) => {
       const target = entries[0];
-      console.log(target.isIntersecting);
       if (target.isIntersecting) {
          setPage((page) => page + 1);
       }

@@ -31,7 +31,6 @@ const Categories = () => {
    useEffect(() => {
       const FetchData = async () => {
          // try {
-         // @ts-ignore
          const type = params.type;
          const dataMovies = await API.get(
             `3/${type}/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=${page}`,
@@ -49,7 +48,6 @@ const Categories = () => {
          // 	console.log(e.message);
          // }
       };
-      console.log(movies);
       FetchData();
    }, [page]);
 
