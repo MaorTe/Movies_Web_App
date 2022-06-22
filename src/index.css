@@ -601,10 +601,10 @@ input.search-submit:hover {
 }
 
 @media all and (max-width: 520px) {
-   /* .more-info::marker {
+   .more-info::marker {
       animation: none;
       animation-iteration-count: 0;
-   } */
+   }
    .movie-details-container {
       flex-direction: column;
    }
