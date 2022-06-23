@@ -12,7 +12,7 @@ const Carousel = ({ data, onPosterClick, width }) => {
       speed: 500,
       slidesToShow:
          (width >= 1300 && 4) || (width >= 1000 && width < 1300 && 3) || (width < 1000 && 2),
-      slidesToScroll: 3,
+      slidesToScroll: width < 1000 ? 2 : 3,
       // prevArrow: <PrevArrow />,
       // nextArrow: <NextArrow />,
       // prevArrow: <PrevArrow onClick={() => {}} className="" />,
