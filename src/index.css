@@ -280,6 +280,10 @@ input.search-submit:hover {
    position: relative;
    z-index: 1;
    overflow: hidden;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   flex: 1;
 }
 .bg-filter {
    position: absolute;
@@ -363,7 +367,7 @@ input.search-submit:hover {
 .plusIcon {
    /* position: fixed; */
    width: 50px;
-   margin-left: 20px;
+   /* margin-left: 20px; */
    margin-right: 5px;
    bottom: 20px;
    align-items: center;
@@ -493,6 +497,7 @@ input.search-submit:hover {
    width: 1.5rem;
    margin-left: 5px;
    color: rgb(246, 246, 32);
+   cursor: auto;
 }
 .movie-details-content {
    background: rgba(255, 255, 255, 0.185);
@@ -502,7 +507,12 @@ input.search-submit:hover {
    margin: 1rem;
    padding: 1rem;
    width: 35vw;
+   flex-direction: column;
    /* height: 25vh; */
+}
+.movie-trailer {
+   margin: 1rem;
+   width: 64vw;
 }
 
 .textbox {
@@ -525,6 +535,7 @@ input.search-submit:hover {
    color: #e0e0e5;
    cursor: pointer;
    font-size: 18px;
+   inline-size: fit-content;
 }
 .more-info:hover {
    color: #909dc7;
@@ -590,6 +601,16 @@ input.search-submit:hover {
 }
 
 @media all and (max-width: 520px) {
+   /* .more-info::marker {
+      animation: none;
+      animation-iteration-count: 0;
+   } */
+   .movie-details-container {
+      flex-direction: column;
+   }
+   .movie-trailer {
+      width: max-content;
+   }
    .movie-details-content {
       width: 90vw;
    }

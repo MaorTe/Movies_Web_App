@@ -6,6 +6,7 @@ import AddOrRemoveBtn from '../components/AddOrRemoveBtn';
 
 const MovieDetails = ({ onButtonClick }) => {
    const [movie, setMovie] = useState(null);
+   const [trailerKey, setTrailerKey] = useState(null);
    const params = useParams();
    useEffect(() => {
       const FetchData = async () => {
@@ -18,10 +19,10 @@ const MovieDetails = ({ onButtonClick }) => {
             `3/${type}/${movieId}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
          );
          const trailer = await API.get(
-            `3/movie/${movieId}/videos?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
+            `3/${type}/${movieId}/videos?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
          );
 
-         console.log(trailer.data.results);
+         setTrailerKey(trailer.data.results[0].key);
          setMovie({
             id: data.id,
             title: data.title || data.name,
@@ -54,7 +55,7 @@ const MovieDetails = ({ onButtonClick }) => {
                         `url(https://image.tmdb.org/t/p/original${movie.bgPoster})`) ||
                      `red`,
                }}></div>
-            <div className="movie-details-content">
+            <div className="movie-details-content flex-center">
                <h1 className="movie-title textbox">{movie.title}</h1>
 
                <AddOrRemoveBtn
@@ -65,14 +66,19 @@ const MovieDetails = ({ onButtonClick }) => {
                   onButtonClick={onButtonClick || onPosterClick}
                />
                <div className="flex-start">
-                  {movie.releaseDate.slice(0, 4)}
-                  <a href={movie.imdb} target="_blank" rel="noreferrer">
+                  <a
+                     href={movie.imdb}
+                     target="_blank"
+                     rel="noreferrer"
+                     style={{ marginRight: '15px' }}>
                      {<FaImdb className="plusIcon"></FaImdb>}
                   </a>
                   {movie.rate}
                   {<FaStar className="plusIcon star"></FaStar>}
                </div>
-               <div>{movie.genre}</div>
+
+               <div style={{ margin: '5px 0' }}>{movie.genre}</div>
+               {movie.releaseDate.slice(0, 4)}
                {movie.logoPath && (
                   <img
                      src={`https://image.tmdb.org/t/p/original${movie.logoPath}`}
@@ -81,11 +87,24 @@ const MovieDetails = ({ onButtonClick }) => {
                      className="margin-top"
                   />
                )}
-
-               <details>
-                  <summary className="more-info">Show More +</summary>
-                  <p>{movie.summary}</p>
-               </details>
+               <div style={{ alignSelf: 'flex-start' }}>
+                  <details>
+                     <summary className="more-info">Show More...</summary>
+                     <p style={{ marginTop: '10px' }}>{movie.summary}</p>
+                  </details>
+               </div>
+            </div>
+            <div className="movie-trailer">
+               <iframe
+                  width={window?.innerWidth < 520 ? 360 : 1131}
+                  height={window?.innerWidth < 520 ? 350 : 636}
+                  //   width="1131"
+                  //   height="636"
+                  src={`https://www.youtube.com/embed/${trailerKey}`}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen="true"
+               />
             </div>
          </div>
       );
