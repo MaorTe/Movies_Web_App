@@ -51,7 +51,7 @@ const SearchResults = () => {
       };
 
       search();
-   }, [query, type, page, searchQuery, searchType]);
+   }, [query, type, page, searchQuery]);
 
    // useEffect for IntersectionObserver
    useEffect(() => {
@@ -75,7 +75,7 @@ const SearchResults = () => {
       if (loader.current) {
          observer.observe(loader.current);
       }
-   }, [query, searchQuery]);
+   }, [query, searchQuery, searchType]);
 
    const onPosterClick = (movieID) => {
       console.log(movieID);
