@@ -13,6 +13,7 @@ const SearchResults = () => {
 
    const [results, setResults] = useState([]);
    const [searchQuery, setSearchQuery] = useState('');
+   const [searchType, setSearchType] = useState('');
 
    const params = useParams();
    const query = params.query;
@@ -21,25 +22,36 @@ const SearchResults = () => {
    useEffect(() => {
       const search = async () => {
          setSearchQuery(params.query);
+         setSearchType(params.type);
 
-         const dataMovies = await API.get(
-            `3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${page}&include_adult=false`,
-         );
-         const movies = [...dataMovies.data.results].map((el) => {
-            return {
-               id: el.id,
-               title: el.title || el.name,
-               poster:
-                  (el.poster_path && `https://image.tmdb.org/t/p/original${el.poster_path}`) ||
-                  `https://ofilmdb.com/assets/img/cover.jpg`,
-               type: type,
-            };
-         });
-         setResults([...results, ...movies]);
+         if (query !== searchQuery) {
+            setResults([]);
+            setPage(null);
+         } else {
+            const dataMovies = await API.get(
+               `3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${page}&include_adult=false`,
+            );
+            const movies = [...dataMovies.data.results].map((el) => {
+               return {
+                  id: el.id,
+                  title: el.title || el.name,
+                  poster:
+                     (el.poster_path && `https://image.tmdb.org/t/p/original${el.poster_path}`) ||
+                     `https://ofilmdb.com/assets/img/cover.jpg`,
+                  type: type,
+               };
+            });
+            console.log(type, searchType);
+            if (type !== searchType) {
+               console.log('swapped');
+               setResults(movies);
+               setPage(null);
+            } else setResults([...results, ...movies]);
+         }
       };
 
       search();
-   }, [query, type, page, searchQuery]);
+   }, [query, type, page, searchQuery, searchType]);
 
    // useEffect for IntersectionObserver
    useEffect(() => {
@@ -50,6 +62,8 @@ const SearchResults = () => {
       };
       // initialize IntersectionObserver
       // and attaching to Load More div
+      setSearchQuery(params.query);
+
       const observer = new IntersectionObserver((entries) => {
          const lastCard = entries[0];
          if (lastCard.isIntersecting) {
@@ -57,13 +71,10 @@ const SearchResults = () => {
          }
       }, options);
 
-      if (query !== searchQuery) {
-         setResults([]);
-         console.log(page);
-      }
+      observer.unobserve(loader.current);
       if (loader.current) {
          observer.observe(loader.current);
-      } else observer.unobserve(loader.current);
+      }
    }, [query, searchQuery]);
 
    const onPosterClick = (movieID) => {
