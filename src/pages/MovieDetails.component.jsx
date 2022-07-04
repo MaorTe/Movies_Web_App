@@ -7,6 +7,8 @@ import AddOrRemoveBtn from '../components/AddOrRemoveBtn';
 const MovieDetails = ({ onButtonClick }) => {
    const [movie, setMovie] = useState(null);
    const [trailerKey, setTrailerKey] = useState(null);
+   const [showMore, setShowMore] = useState(false);
+
    const params = useParams();
    useEffect(() => {
       const FetchData = async () => {
@@ -21,8 +23,7 @@ const MovieDetails = ({ onButtonClick }) => {
          const trailer = await API.get(
             `3/${type}/${movieId}/videos?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
          );
-
-         setTrailerKey(trailer.data.results[0].key);
+         setTrailerKey(trailer.data.results[0]?.key);
          setMovie({
             id: data.id,
             title: data.title || data.name,
@@ -44,6 +45,21 @@ const MovieDetails = ({ onButtonClick }) => {
    const onPosterClick = (movieID) => {
       console.log(movieID);
    };
+   const showMoreWords = () => {
+      if (movie.summary.length > 196) {
+         return (
+            <>
+               {showMore
+                  ? movie.summary + ' '
+                  : `${movie.summary?.slice(0, window?.innerWidth < 520 ? 90 : 196)}... `}
+               <button className="btn-link" onClick={() => setShowMore(!showMore)}>
+                  {showMore ? 'Show less' : 'Show more'}
+               </button>
+            </>
+         );
+      }
+      return movie.summary;
+   };
    if (movie) {
       return (
          <div className="movie-details-container">
@@ -58,13 +74,22 @@ const MovieDetails = ({ onButtonClick }) => {
             <div className="movie-details-content flex-center">
                <h1 className="movie-title textbox">{movie.title}</h1>
 
-               <AddOrRemoveBtn
-                  id={movie.id}
-                  title={movie.title}
-                  poster={`https://image.tmdb.org/t/p/original${movie.poster}`}
-                  type={movie.type}
-                  onButtonClick={onButtonClick || onPosterClick}
-               />
+               <div style={{ margin: '5px 0' }}>{movie.genre}</div>
+               {movie.releaseDate.slice(0, 4)}
+               <div
+                  style={{
+                     alignSelf: 'center',
+                     marginTop: '10px',
+                     maxWidth: '330px',
+                     flexWrap: 'wrap',
+                  }}>
+                  {showMoreWords()}
+                  {/* <details>
+                     <summary className="more-info">Show More...</summary>
+                     <p style={{ marginTop: '10px' }}>{movie.summary.slice(0, 185)}</p>
+                  </details> */}
+               </div>
+
                <div className="flex-start">
                   <a
                      href={movie.imdb}
@@ -77,33 +102,36 @@ const MovieDetails = ({ onButtonClick }) => {
                   {<FaStar className="plusIcon star"></FaStar>}
                </div>
 
-               <div style={{ margin: '5px 0' }}>{movie.genre}</div>
-               {movie.releaseDate.slice(0, 4)}
                {movie.logoPath && (
                   <img
                      src={`https://image.tmdb.org/t/p/original${movie.logoPath}`}
                      alt=""
-                     width="200"
+                     width="100"
                      className="margin-top"
                   />
                )}
-               <div style={{ alignSelf: 'flex-start' }}>
-                  <details>
-                     <summary className="more-info">Show More...</summary>
-                     <p style={{ marginTop: '10px' }}>{movie.summary}</p>
-                  </details>
+               <div style={{ marginTop: '25px', marginBottom: '20px' }}>
+                  <AddOrRemoveBtn
+                     id={movie.id}
+                     title={movie.title}
+                     poster={`https://image.tmdb.org/t/p/original${movie.poster}`}
+                     type={movie.type}
+                     onButtonClick={onButtonClick || onPosterClick}
+                  />
                </div>
             </div>
             <div className="movie-trailer">
                <iframe
-                  width={window?.innerWidth < 520 ? 360 : 1131}
-                  height={window?.innerWidth < 520 ? 350 : 636}
+                  width={window?.innerWidth < 520 ? window.innerWidth - 33 : 1131}
+                  height={
+                     window?.innerWidth < 520 ? window.innerWidth - 33 : window.innerHeight - '100'
+                  }
                   //   width="1131"
                   //   height="636"
                   src={`https://www.youtube.com/embed/${trailerKey}`}
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen="true"
+                  allowFullScreen={true}
                />
             </div>
          </div>

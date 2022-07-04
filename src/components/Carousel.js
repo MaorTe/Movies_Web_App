@@ -62,6 +62,7 @@ const Carousel = ({ data, onPosterClick, width }) => {
                   width={300}
                   height={450}
                   onButtonClick={onPosterClick}
+                  homePageClassName={'card__button'}
                />
             ))}
          </Slider>
