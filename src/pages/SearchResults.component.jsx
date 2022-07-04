@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import API from '../api/API';
 import MovieCard from '../components/MovieCard';
 import MyLoader from '../components/MyLoader';
@@ -16,14 +16,17 @@ const SearchResults = () => {
    const [searchType, setSearchType] = useState('');
 
    const params = useParams();
-   const query = params.query;
+   const [searchParams, setSearchParams] = useSearchParams();
+
    const type = params.type;
+   const query = searchParams.get('q');
 
    useEffect(() => {
       const search = async () => {
-         setSearchQuery(params.query);
+         setSearchQuery(query);
          setSearchType(params.type);
 
+         console.log(query, searchQuery);
          if (query !== searchQuery) {
             setResults([]);
             setPage(null);
@@ -62,7 +65,7 @@ const SearchResults = () => {
       };
       // initialize IntersectionObserver
       // and attaching to Load More div
-      setSearchQuery(params.query);
+      setSearchQuery(searchParams.get('q'));
 
       const observer = new IntersectionObserver((entries) => {
          const lastCard = entries[0];

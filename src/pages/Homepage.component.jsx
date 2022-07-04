@@ -68,7 +68,7 @@ const Homepage = () => {
       <div className="homepage">
          <div className="flex">
             <h1>Movies-Top</h1>
-            <Link className="category-link btn third" to={`/Categories/movie`}>
+            <Link className="category-link btn third" to={`/categories/movie`}>
                view all
             </Link>
          </div>
@@ -78,7 +78,7 @@ const Homepage = () => {
 
          <div className="flex">
             <h1>Series-Top</h1>
-            <Link className="category-link btn third" to={`/Categories/tv`}>
+            <Link className="category-link btn third" to={`/categories/tv`}>
                view all
             </Link>
          </div>

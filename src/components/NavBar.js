@@ -17,7 +17,7 @@ const NavBar = ({ className }) => {
 					</Link>
 				</li>
 				<li>
-					<Link to="/Watchlist">
+					<Link to="/watchlist">
 						<h3>Watchlist</h3>
 					</Link>
 				</li>

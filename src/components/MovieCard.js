@@ -29,7 +29,7 @@ const MovieCard = ({
 
    const cardOne = () => (
       <div className="movie-card-container">
-         <Link to={`/MovieDetails/${type}/${id}`}>
+         <Link to={`/moviedetails/${type}/${id}`}>
             <LazyLoadImage
                src={poster} // use normal <img> attributes as props
                alt={''}
@@ -55,10 +55,10 @@ const MovieCard = ({
          <div className="card">
             <figure className="card__thumb">
                {isCarouselMobile()}
-               <figcaption class="card__caption">
+               <figcaption className="card__caption">
                   <h2 className="card__title">{title}</h2>
                   <p className="card__snippet"></p>
-                  <Link className="card__button" to={`/MovieDetails/${type}/${id}`}>
+                  <Link className="card__button" to={`/moviedetails/${type}/${id}`}>
                      To Movie
                   </Link>
                   <AddOrRemoveBtn
