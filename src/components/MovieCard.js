@@ -13,17 +13,29 @@ const MovieCard = ({
    height,
    homePageClassName,
 }) => {
+   const isCarouselMobile = () => {
+      return window.innerWidth < 520 ? (
+         <img src={poster} alt={poster} width={width} height={height} className="card__image" />
+      ) : (
+         <LazyLoadImage
+            src={poster}
+            alt={poster}
+            width={width}
+            height={height}
+            className="card__image"
+         />
+      );
+   };
+
    const cardOne = () => (
       <div className="movie-card-container">
          <Link to={`/MovieDetails/${type}/${id}`}>
-            {/* <img src={poster} className="img-select" alt="" width={width} /> */}
             <LazyLoadImage
                src={poster} // use normal <img> attributes as props
                alt={''}
                width={width}
                height={height}
                className="img-select"
-               // height={100}
             />
          </Link>
          <h3>{title}</h3>
@@ -42,13 +54,7 @@ const MovieCard = ({
       <div className="container">
          <div className="card">
             <figure className="card__thumb">
-               <LazyLoadImage
-                  src={poster}
-                  alt={poster}
-                  width={width}
-                  height={height}
-                  className="card__image"
-               />
+               {isCarouselMobile()}
                <figcaption class="card__caption">
                   <h2 className="card__title">{title}</h2>
                   <p className="card__snippet"></p>
