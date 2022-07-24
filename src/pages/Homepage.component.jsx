@@ -72,7 +72,7 @@ const Homepage = () => {
                view all
             </Link>
          </div>
-         <div>
+         <div style={{ marginBottom: window.innerWidth < 520 && '3rem' }}>
             <Carousel data={moviesTop} onPosterClick={onPosterClick} width={width}></Carousel>
          </div>
 

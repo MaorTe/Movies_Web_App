@@ -227,9 +227,6 @@ input.search-submit:hover {
 .homepage {
    min-height: calc(100vh - 50px);
    padding: 2rem;
-   /* display: flex;
-	justify-content: center;
-	align-items: center; */
 }
 .homepage .movie-card-container .img-select {
    margin: 0 auto;
@@ -630,6 +627,13 @@ input.search-submit:hover {
    .margin-top {
       margin-top: 10px;
       margin-bottom: 10px;
+   }
+   .homepage .slick-dots {
+      margin-bottom: -7px;
+   }
+   .homepage .slick-list {
+      padding: 0.5rem 0 0.5rem 0;
+      margin: 0;
    }
    .bg-filter {
       background-attachment: fixed;

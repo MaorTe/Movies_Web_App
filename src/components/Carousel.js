@@ -7,19 +7,19 @@ import MovieCard from './MovieCard';
 // import PrevArrow from './PrevArrow';
 const Carousel = ({ data, onPosterClick, width }) => {
    const settings = {
-      dots: true,
+      dots: width < 520 ? false : false,
       infinite: false,
       speed: 500,
       slidesToShow:
          (width >= 1300 && 4) || (width >= 1000 && width < 1300 && 3) || (width < 1000 && 2),
       slidesToScroll: width < 1000 ? 2 : 3,
+      initialSlide: 0,
+      // arrows: width < 520 ? false : true,
+      swipe: width < 520 ? true : false,
       // prevArrow: <PrevArrow />,
       // nextArrow: <NextArrow />,
       // prevArrow: <PrevArrow onClick={() => {}} className="" />,
       // nextArrow: <NextArrow onClick={() => {}} className="" />,
-
-      initialSlide: 0,
-      arrows: true,
       // responsive: [
       // 	{
       // 		breakpoint: 1024,

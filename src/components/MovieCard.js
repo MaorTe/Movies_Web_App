@@ -56,7 +56,7 @@ const MovieCard = ({
             <figure className="card__thumb">
                {isCarouselMobile()}
                <figcaption className="card__caption">
-                  <h2 className="card__title">{title}</h2>
+                  {window.innerWidth > 520 && <h2 className="card__title">{title}</h2>}
                   <p className="card__snippet"></p>
                   <Link className="card__button" to={`/moviedetails/${type}/${id}`}>
                      To Movie
@@ -72,6 +72,7 @@ const MovieCard = ({
                </figcaption>
             </figure>
          </div>
+         {window.innerWidth < 520 && <h2 className="card__title">{title}</h2>}
       </div>
    );
 
