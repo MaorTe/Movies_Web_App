@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../api/API';
 import Carousel from '../components/Carousel';
-
+const api_key = process.env.REACT_APP_API_KEY;
+console.log(api_key);
 const Homepage = () => {
    const [moviesTop, setMoviesTop] = useState([]);
    const [seriesTop, setSeriesTop] = useState([]);
@@ -18,10 +19,10 @@ const Homepage = () => {
       const FetchData = async () => {
          // try {
          const dataMovies = await API.get(
-            '3/movie/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1',
+            `3/movie/top_rated?api_key=${api_key}&language=en-US&page=1`,
          );
          const dataSeries = await API.get(
-            '3/tv/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1',
+            `3/tv/top_rated?api_key=${api_key}&language=en-US&page=1`,
          );
          // const { data } = await API.get(
          // 	'3/movie/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=1'

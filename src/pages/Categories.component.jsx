@@ -4,6 +4,7 @@ import API from '../api/API';
 import MovieCard from '../components/MovieCard';
 import MyLoader from '../components/MyLoader';
 import ScrollArrow from '../components/ScrollArrow';
+const api_key = process.env.REACT_APP_API_KEY;
 
 const Categories = () => {
    // tracking on which page we currently are
@@ -27,13 +28,12 @@ const Categories = () => {
          observer.observe(loader.current);
       }
    }, []);
-
    useEffect(() => {
       const FetchData = async () => {
          // try {
          const type = params.type;
          const dataMovies = await API.get(
-            `3/${type}/top_rated?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&page=${page}`,
+            `3/${type}/top_rated?api_key=${api_key}&language=en-US&page=${page}`,
          );
          const movieArr = [...dataMovies.data.results].map((el) => {
             return {

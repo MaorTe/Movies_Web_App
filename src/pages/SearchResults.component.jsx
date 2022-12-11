@@ -10,7 +10,7 @@ const SearchResults = () => {
    const [page, setPage] = useState(null);
    // add loader reference
    const loader = useRef(null);
-
+   const api_key = process.env.REACT_APP_API_KEY;
    const [results, setResults] = useState([]);
    const [searchQuery, setSearchQuery] = useState('');
    const [searchType, setSearchType] = useState('');
@@ -32,7 +32,7 @@ const SearchResults = () => {
             setPage(null);
          } else {
             const dataMovies = await API.get(
-               `3/search/${type}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US&query=${query}&page=${page}&include_adult=false`,
+               `3/search/${type}?api_key=${api_key}&language=en-US&query=${query}&page=${page}&include_adult=false`,
             );
             const movies = [...dataMovies.data.results].map((el) => {
                return {

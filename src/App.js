@@ -9,7 +9,6 @@ import SearchResults from './pages/SearchResults.component';
 import Categories from './pages/Categories.component';
 
 function App() {
-   // const API_KEY = 'apikey=1ff185cc';
    // const [topRatedMovies, setTopRatedMovies] = useState([]);
    useEffect(() => {
       const createLocalStorage = () => {

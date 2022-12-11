@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import API from '../api/API';
 import AddOrRemoveBtn from '../components/AddOrRemoveBtn';
 
+const api_key = process.env.REACT_APP_API_KEY;
 const MovieDetails = ({ onButtonClick }) => {
    const [movie, setMovie] = useState(null);
    const [trailerKey, setTrailerKey] = useState(null);
    const [showMore, setShowMore] = useState(false);
-
    const params = useParams();
    useEffect(() => {
       const FetchData = async () => {
@@ -17,11 +17,9 @@ const MovieDetails = ({ onButtonClick }) => {
          const movieId = Number(params.id);
          // @ts-ignore
          const type = params.type;
-         const { data } = await API.get(
-            `3/${type}/${movieId}?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
-         );
+         const { data } = await API.get(`3/${type}/${movieId}?api_key=${api_key}&language=en-US`);
          const trailer = await API.get(
-            `3/${type}/${movieId}/videos?api_key=b99ccc44cb21876b1925f3944e20854b&language=en-US`,
+            `3/${type}/${movieId}/videos?api_key=${api_key}&language=en-US`,
          );
          setTrailerKey(trailer.data.results[0]?.key);
          setMovie({
