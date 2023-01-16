@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
-// import MyLoader from '../components/MyLoader';
+// import Skeleton from '../components/Skeleton';
 
 const Watchlist = () => {
    const [watchlist, setWatchlist] = useState([]);

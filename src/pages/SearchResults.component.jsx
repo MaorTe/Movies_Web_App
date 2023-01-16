@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import API from '../api/API';
 import MovieCard from '../components/MovieCard';
-import MyLoader from '../components/MyLoader';
+import Skeleton from '../components/Skeleton';
 import ScrollArrow from '../components/ScrollArrow';
 
 const SearchResults = () => {
@@ -105,18 +105,18 @@ const SearchResults = () => {
          {window.innerWidth < 520 ? (
             <>
                <span ref={loader}>
-                  <MyLoader />
+                  <Skeleton />
                </span>
-               <MyLoader />
+               <Skeleton />
             </>
          ) : (
             <>
-               <MyLoader />
-               <MyLoader />
+               <Skeleton />
+               <Skeleton />
                <span ref={loader}>
-                  <MyLoader />
+                  <Skeleton />
                </span>
-               <MyLoader />
+               <Skeleton />
             </>
          )}
       </div>

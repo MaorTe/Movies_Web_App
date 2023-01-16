@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../api/API';
 import MovieCard from '../components/MovieCard';
-import MyLoader from '../components/MyLoader';
+import Skeleton from '../components/Skeleton';
 import ScrollArrow from '../components/ScrollArrow';
 const api_key = process.env.REACT_APP_API_KEY;
 
@@ -83,19 +83,19 @@ const Categories = () => {
             {window.innerWidth < 520 ? (
                <>
                   <span ref={loader}>
-                     <MyLoader />
+                     <Skeleton />
                      {/* <h2>Loading...</h2> */}
                   </span>
-                  <MyLoader />
+                  <Skeleton />
                </>
             ) : (
                <>
-                  <MyLoader />
-                  <MyLoader />
+                  <Skeleton />
+                  <Skeleton />
                   <span ref={loader}>
-                     <MyLoader />
+                     <Skeleton />
                   </span>
-                  <MyLoader />
+                  <Skeleton />
                </>
             )}
          </div>
